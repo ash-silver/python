@@ -41,3 +41,27 @@ while 1:
     
 print(score + li[len(li) - 1])       
 
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# li = list()
+# for i in range(0, n):
+#     li.append(int(input()))
+# cnt = 0
+# i = 0
+# while i < len(li):
+#     if i < len(li) - 2:
+#         if cnt < 1:   
+#             if li[i + 1] > li[i + 2]:
+#                 li[i + 1] += li[i]
+#                 cnt += 1
+#                 i += 1
+#             else:
+#                 li[i + 2] += li[i]
+#                 i += 2
+#         else:
+#             cnt = 0
+#             li[i + 2] += li[i]        
+#     else:
+#         if

@@ -1,48 +1,42 @@
 import sys
 input = sys.stdin.readline
 
-n, m, b = map(int, input().split())
-minecraft = [0] * n
-answer1, answer2 = 987654321, -1
+# 크로아티아 알파벳
+sen=list(input())
+cnt = len(sen)- 1
 
-for i in range(0, n):
-    minecraft[i] = map(int, input().split())
+for i in range(0, len(sen)):
+    if sen[i] == '-':
+        cnt -= 1
+    elif sen[i] == 'j':
+        if sen[i-1] == 'l' or sen[i - 1] =='n':
+            cnt -= 1
+    elif sen[i] == '=':
+        cnt -= 1
+        if sen[i - 1] == 'z' and sen[i - 2] == 'd':
+            cnt -= 1
+    else:
+        continue
+print(cnt)
 
-maximum = max(max(minecraft))
-minimum = min(min(minecraft))
 
-def isPossible(target):
-    num = b
-    for i in range(0, n):
-        for k in range(0, m):
-            if minecraft[i][k] == target:
-                continue
-            elif minecraft[i][k] > target:
-                num += (minecraft[i][k] - target)
-            else:
-                num -= (target - minecraft[i][k])
-    if num >= 0 : 
+
+
+
+
+
+
+
+# 피보나치 수 5
+
+n = int(input())
+
+def fibo(num):
+    if num < 2:
+        return num
+    elif num == 2:
         return 1
     else:
-        return 0
+        return fibo(num - 1) + fibo(num - 2)
 
-def time(target):
-    result = 0
-    for i in range(0, n):
-        for k in range(0, m):
-            if minecraft[i][k] == target:
-                continue
-            elif minecraft[i][k] > target:
-                result += (minecraft[i][k] - target) * 2
-            else:
-                result += (target - minecraft[i][k])
-    return result
-
-for i in range(maximum, minimum - 1, -1):
-    if isPossible(i):
-        tmp = time(i)
-        if tmp < answer1:
-            answer1 = tmp
-            answer2 = i
-print(answer1, answer2)      
-
+print(fibo(n))
